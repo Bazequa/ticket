@@ -1,0 +1,81 @@
+{% include 'base.html' %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>ADMIN</title>
+</head>
+<body>
+  <h1>Welcome {{user}}</h1>
+  <div>
+<table class="table" align="center ml-3 pl-3">
+    <thead>
+    <tr align="center">
+        <th>employeeId</th>
+        <th>employee_name</th>
+        <th>Requirement</th>
+        <th>Reason</th>
+        <th>Time</th>
+        <th>Status</th>
+        <th>Completion</th>
+    </tr>
+  </thead>
+
+    {% for fm in pfm %}
+<tr align="center">
+    <td>{{ fm.employee_id}}</td>
+    <td>{{ fm.employee_name }}</td>
+    <td>{{ fm.your_requirement }}</td>
+    <td>{{ fm.Reason }}</td>
+    <td>{{fm.request_raised_at}}</td>
+      <td> {{fm.status}}</td>
+      <td><a href="/complete/{{fm.id}}/1">Complete</a></td>
+</tr>
+{% endfor %}
+
+
+
+
+    {% for fm in afm %}
+<tr align="center">
+    <td>{{ fm.employee_id }}</td>
+    <td>{{ fm.employee_name }}</td>
+    <td>{{fm.your_requirement}}</td>
+    <td>{{ fm.Reason }}</td>
+    <td>{{fm.request_raised_at}}</td>
+      <td> {{fm.status}}</td>
+        <td> <a href="/complete/{{fm.id}}/2">Complete</a></td>
+</tr>
+{% endfor %}
+
+
+    {% for fm in bfm %}
+<tr align="center">
+    <td>{{ fm.employee_id }}</td>
+    <td>{{ fm.employee_name }}</td>
+    <td>{{ fm.your_requirement }}</td>
+    <td>{{ fm.Reason }}</td>
+    <td>{{fm.request_raised_at}}</td>
+    <td> {{fm.status}}</td>
+    <td><a href="/complete/{{fm.id}}/3">Complete</a></td>
+
+</tr>
+{% endfor %}
+
+{% for fm in sfm %}
+<tr align="center">
+    <td>{{ fm.employee_id }}</td>
+    <td>{{ fm.employee_name }}</td>
+    <td>{{ fm.your_requirement }}</td>
+    <td>{{ fm.Reason }}</td>
+    <td>{{fm.request_raised_at}}</td>
+    <td> {{fm.status}}</td>
+    <td><a href="/complete/{{fm.id}}/4">Complete</a></td>
+
+</tr>
+{% endfor %}
+
+</table>
+  </div>
+</body>
+   
