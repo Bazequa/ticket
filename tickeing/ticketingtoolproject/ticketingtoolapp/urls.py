@@ -18,10 +18,12 @@ urlpatterns = [
 
     path('sign/',views.signup,name="signup"),
     path('logout/',views.ulogout,name="logout"),
-    path('edit/<int:model>/<int:id>',views.edit,name='edit'),
+    path('accept/<int:model>/<int:id>',views.accept,name='accept'),
+    path('reject/<int:model>/<int:id>',views.reject,name='reject'),
+    path('complete/<int:model>/<int:id>',views.complete,name='complete'),
+
     path('tdelete/<int:id>/<int:model>',views.tdelete,name='delete'),
-    # path('accept/<int:id>/<int:model>',views.accept,name='accept'),
-    # path('reject/<int:id>/<int:model>',views.reject,name='reject'),
+
 ]
 
 

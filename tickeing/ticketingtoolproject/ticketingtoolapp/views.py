@@ -1,6 +1,5 @@
 from django.shortcuts import render,HttpResponseRedirect
-from .forms import  SelectType,ProductForm,ApplicationForm,BookingForm, SignUpForm,StationaryForm
-from .forms import ProductChoiceForm,ApplicationChoiceForm,BookingChoiceForm,StationaryChoiceForm
+from .forms import  ProductForm,ApplicationForm,BookingForm, SignUpForm,StationaryForm
 from .models import ProductModel,ApplicationModel,BookingModel,StationaryModel
 # from .models import Manager,Employee,AdminPage
 from django.contrib.auth import authenticate, login, logout
@@ -142,25 +141,6 @@ def manager(request):
     context = {'pfm': pfm, 'afm': afm, 'bfm': bfm, 'sfm': sfm}
     return render(request,'manager.html',context)
 
-def manager1(request):
-    if request.method=="POST":
-        print(request.POST)
-        pfm1 = ProductChoiceForm(request.POST)
-        afm1 = ApplicationChoiceForm(request.POST)
-        bfm1 = BookingChoiceForm(request.POST)
-        sfm1 = StationaryChoiceForm(request.POST)
-        if pfm1.is_valid():
-            pfm1.save()
-        if afm1.is_valid():
-            afm1.save()
-        if bfm1.is_valid():
-            bfm1.save()
-        if sfm1.is_valid():
-            sfm1.save()
-        context={'pfm1':pfm1,'afm1':afm1,'bfm1':bfm1,'sfm1':sfm1,'id':id}
-        return render(request,'manager.html',context)
-    else:
-        return HttpResponseRedirect('/manager')
 
 def admin(request):
     id='raised'
@@ -171,36 +151,6 @@ def admin(request):
     context={'pfm':pfm,'afm':afm,'bfm':bfm,'sfm':sfm,'id':id}
     return render(request,'admin.html', context )
 
-# def reject(request,id, model):
-#     # if model==1:
-#     #     rpm=ProductModel.objects.get(id=id)
-#     #     rpm.reject_status=2
-#     #     rpm.save()
-#     # if model == 2:
-#     #     ram = ApplicationModel.objects.get(id=id)
-#     #     ram.reject_status=2
-#     #     ram.save()
-#     # if model == 3:
-#     #     rbm = BookingModel.objects.get(id=id)
-#     #     rbm.reject_status=2
-#     #     rbm.save()
-#     return HttpResponseRedirect('/manager')
-
-# def accept(request,id,model):
-#         # value='raised'
-#         # if model == 1:
-#         #     apm =ProductModel.objects.get(id=id)
-#         #     value.replace('accept')
-#         #     print(apm)
-#         # if model == 2:
-#         #     aam=ApplicationModel.objects.get(id=id)
-#         #     value.replace('accept')
-#         #     print(aam)
-#         # if model == 3:
-#         #     abm=BookingModel.objects.get(id=id)
-#         #     value.replace('accept')
-#         #     print(abm)
-#         return HttpResponseRedirect('/manager')
 
 def tdelete(request,id,model):
         if model == 1:
@@ -218,13 +168,77 @@ def tdelete(request,id,model):
         return HttpResponseRedirect('/employee')
 
 
-def edit(request,model,id):
-    print(type(model))
+def accept(request,model,id):
+    # print(type(model))
     if model == 1:
         pmodel=ProductModel.objects.get(id=id)
         pmodel.status = 'accepted'
         pmodel.save(update_fields=['status'])
-        return HttpResponseRedirect('/manager')
+
+    if model == 2:
+        amodel=ApplicationModel.objects.get(id=id)
+        amodel.status= 'accepted'
+        amodel.save(update_fields=['status'])
+
+    if model==3:
+        bmodel=BookingModel.objects.get(id=id)
+        bmodel.status='accepted'
+        bmodel.save(update_fields=['status'])
+
+    if model==4:
+        smodel=StationaryModel.objects.get(id=id)
+        smodel.status='accepted'
+        smodel.save(update_fields=['status'])
+    return HttpResponseRedirect('/manager')
+
+
+def reject(request,model,id):
+    # print(type(model))
+    if model == 1:
+        pmodel=ProductModel.objects.get(id=id)
+        pmodel.status = 'rejected'
+        pmodel.save(update_fields=['status'])
+
+    if model == 2:
+        amodel=ApplicationModel.objects.get(id=id)
+        amodel.status= 'rejected'
+        amodel.save(update_fields=['status'])
+
+    if model==3:
+        bmodel=BookingModel.objects.get(id=id)
+        bmodel.status='rejected'
+        bmodel.save(update_fields=['status'])
+
+    if model==4:
+        smodel=StationaryModel.objects.get(id=id)
+        smodel.status='rejected'
+        smodel.save(update_fields=['status'])
+    return HttpResponseRedirect('/manager')
+
+def complete(request,model,id):
+    # print(type(model))
+    if model == 1:
+        pmodel=ProductModel.objects.get(id=id)
+        pmodel.status = 'completed'
+        pmodel.save(update_fields=['status'])
+
+    if model == 2:
+        amodel=ApplicationModel.objects.get(id=id)
+        amodel.status= 'completed'
+        amodel.save(update_fields=['status'])
+
+    if model==3:
+        bmodel=BookingModel.objects.get(id=id)
+        bmodel.status='completed'
+        bmodel.save(update_fields=['status'])
+
+    if model==4:
+        smodel=StationaryModel.objects.get(id=id)
+        smodel.status='completed'
+        smodel.save(update_fields=['status'])
+    return HttpResponseRedirect('/adminpage')
+
+
 
 
 

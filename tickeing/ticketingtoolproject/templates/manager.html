@@ -48,9 +48,10 @@
     <td>{{ fm.your_requirement }}</td>
     <td>{{ fm.Reason }}</td>
     <td>{{fm.request_raised_at}}</td>
-      <td><a href="edit/1/{{fm.id}}">accept</a></td>
+      <td><a href="accept/1/{{fm.id}}">accept</a></td>
+    <a href="reject/1/{{fm.id}}">reject</a>
           <td>{{fm.status}}</td>
-<!--    <td>{{id}}</td>-->
+
 </tr>
 {% endfor %}
 
@@ -65,7 +66,8 @@
     <td>{{fm.your_requirement}}</td>
     <td>{{ fm.Reason }}</td>
     <td>{{fm.request_raised_at}}</td>
-      <<td><a href="">accept</a></td>
+      <<td><a href="accept/2/{{fm.id}}">accept</a>
+<a href="reject/2/{{fm.id}}">reject</a></td>
         <td>{{fm.status}}</td>
     <td>{{id}}</td>
 </tr>
@@ -80,7 +82,8 @@
     <td>{{ fm.your_requirement }}</td>
     <td>{{ fm.Reason }}</td>
     <td>{{fm.request_raised_at}}</td>
-    <td><a href="">accept</a></td>
+    <td><a href="accept/3/{{fm.id}}">accept</a>
+    <a href="reject/3/{{fm.id}}">reject</a></td>
         <td>{{fm.status}}</td>
     <td>{{id}}</td>
         </tr>
@@ -95,7 +98,8 @@
     <td>{{ fm.your_requirement }}</td>
     <td>{{ fm.Reason }}</td>
     <td>{{fm.request_raised_at}}</td>
-    <td><a href="">accept</a></td>
+    <td><a href="accept/4/{{fm.id}}">accept</a>
+    <a href="reject/4/{{fm.id}}">reject</a></td>
         <td>{{fm.status}}</td>
     <td>{{id}}</td>
 </tr>

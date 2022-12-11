@@ -5,7 +5,7 @@ from datetime import datetime
 
 priority=(('high','High'),('medium','Medium'),('low','Low'))
 
-status=(('raised','raised'),('accepted','accepted'),('reject','reject'),('complete','complete'))
+status=(('raised','raised'),('accepted','accepted'),('rejected','rejected'),('completed','completed'))
 
 product=(('laptop','Laptop'),('mouse','Mouse'),('headset','Headset'),('keyboard','Keyboard'),('other','Other'))
 class ProductModel(models.Model):
@@ -66,34 +66,4 @@ class StationaryModel(models.Model):
 
 
 
-
-
-# roles = [('Manager','Manager'),('Employee','Employee'),('UserAdmin','UserAdmin')]
-# class User(models.Model):
-#     username=models.CharField(max_length=100)
-#     first_name = models.CharField(max_length=100)
-#     second_name = models.CharField(max_length=100)
-#     email = models.EmailField(max_length=100)
-#     role = models.CharField(max_length=100,choices=roles)
-#     password = models.CharField(max_length=100)
-#     confirm_password=models.CharField(max_length=100)
-#     def __str__(self):
-#         return self.username
-
-
-
-
-# class Employee(models.Model):
-#     ename=models.CharField(max_length=100)
-#     epassword=models.SlugField(max_length=100)
-
-
-# class Manager(models.Model):
-#     mname=models.CharField(max_length=100)
-#     mpassword=models.SlugField(max_length=100)
-
-
-# class AdminPage(models.Model):
-#     aname=models.CharField(max_length=100)
-#     apassword=models.SlugField(max_length=100)
 

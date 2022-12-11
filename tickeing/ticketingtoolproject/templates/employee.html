@@ -25,7 +25,7 @@
 <form>
 <div class="ram"> 
 
-    <h1>welcome  {{user}}</h1>
+   <center><h1>welcome  {{user}}</h1></center>
     <a  class="p-5" href="{% url 'products' %}">PRODUCTS</a></hr>
     <a  class="p-5" href="{% url 'booking' %}">BOOKING</a><hr>
     <a  class="p-5" href="{% url 'application' %}">APPLICATION</a><hr>
@@ -51,8 +51,7 @@
     <td>{{ fm.your_requirement }}</td>
     <td>{{ fm.Reason }}</td>
     <td>{{fm.request_raised_at}}</td>
-<!--    <td>{{fm.status}}</td>-->
-    <td>{{id}}</td>
+    <td>{{fm.status}}</td>
     <td><a  href="/tdelete/{{fm.id}}/1">Delete</a></td>
 </tr>
 {% endif %}
@@ -64,8 +63,7 @@
     <td>{{fm.your_requirement}}</td>
     <td>{{ fm.Reason }}</td>
     <td>{{fm.request_raised_at}}</td>
-<!--    <td>{{fm.status}}</td>-->
-    <td>{{id}}</td>
+    <td>{{fm.status}}</td>
     <td><a  href="/tdelete/{{fm.id}}/2">Delete</a></td>
 </tr>
 {% endif %}
@@ -76,8 +74,7 @@
     <td>{{ fm.your_requirement }}</td>
     <td>{{ fm.Reason }}</td>
     <td>{{fm.request_raised_at}}</td>
-<!--    <td>{{fm.status}}</td>-->
-    <td>{{id}}</td>
+    <td>{{fm.status}}</td>
     <td><a  href="/tdelete/{{fm.id}}/3">Delete</a></td>
 </tr>
 {% endif %}
@@ -89,8 +86,7 @@
     <td>{{ fm.your_requirement }}</td>
     <td>{{ fm.Reason }}</td>
     <td>{{fm.request_raised_at}}</td>
-<!--    <td>{{fm.status}}</td>-->
-    <td>{{id}}</td>
+    <td>{{fm.status}}</td>
     <td><a  href="/tdelete/{{fm.id}}/4">Delete</a></td>
 </tr>
 {% endif %}
