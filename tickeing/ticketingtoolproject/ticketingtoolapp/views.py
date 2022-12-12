@@ -150,7 +150,8 @@ def admin(request):
     afm=ApplicationModel.objects.all()
     bfm=BookingModel.objects.all()
     sfm=StationaryModel.objects.all()
-    context={'pfm':pfm,'afm':afm,'bfm':bfm,'sfm':sfm,'id':id}
+    ticket=Ticket.objects.all()
+    context={'pfm':pfm,'afm':afm,'bfm':bfm,'sfm':sfm,'id':id,'ticket':ticket}
     return render(request,'admin.html', context )
 
 
@@ -200,7 +201,6 @@ def accept(request,model,id):
     return HttpResponseRedirect('/manager')
 
 def reject(request,model,id):
-    # print(type(model))
     if model == 1:
         pmodel=ProductModel.objects.get(id=id)
         pmodel.status = 'rejected'
@@ -228,7 +228,6 @@ def reject(request,model,id):
     return HttpResponseRedirect('/manager')
 
 def complete(request,model,id):
-    # print(type(model))
     if model == 1:
         pmodel=ProductModel.objects.get(id=id)
         pmodel.status = 'completed'
@@ -265,17 +264,16 @@ def ticket(request):
             Manager=request.POST.get('Manager'),
             Remarks=request.POST.get('Remarks'))
             model.save()
-        return HttpResponseRedirect('/ticket')
+        return HttpResponseRedirect('/employee')
     else:
         fm=TicketForm()
     return render(request,'ticket.html',{'form':fm})
 
 def ticket_id(request,model,id,ticket_no):
-    print('===============',id)
-    print(model)
     if model==5:
-        # a=Ticket.objects.all()
         b=Ticket.objects.get(ticket_no=ticket_no)
         return render(request,'ticket_info.html',{'b':b})
+
+
 
 
