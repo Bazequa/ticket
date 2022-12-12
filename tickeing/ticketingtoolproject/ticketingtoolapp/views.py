@@ -1,6 +1,6 @@
 from django.shortcuts import render,HttpResponseRedirect
-from .forms import  ProductForm,ApplicationForm,BookingForm, SignUpForm,StationaryForm
-from .models import ProductModel,ApplicationModel,BookingModel,StationaryModel
+from .forms import  ProductForm,ApplicationForm,BookingForm, SignUpForm,StationaryForm,TicketForm
+from .models import ProductModel,ApplicationModel,BookingModel,StationaryModel,Ticket
 # from .models import Manager,Employee,AdminPage
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.forms import AuthenticationForm
@@ -53,7 +53,7 @@ def signup(request):
 def ulogout(request):
 
     logout(request)
-    return HttpResponseRedirect('/')
+    return HttpResponseRedirect('/login')
 
 
 def products(request):
@@ -129,7 +129,8 @@ def employee(request):
     afm=ApplicationModel.objects.all()
     bfm=BookingModel.objects.all()
     sfm=StationaryModel.objects.all()
-    context={'pfm':pfm,'afm':afm,'bfm':bfm,'sfm':sfm,'id':id}
+    ticketmodel=Ticket.objects.all()
+    context={'pfm':pfm,'afm':afm,'bfm':bfm,'sfm':sfm,'id':id,'ticket':ticketmodel}
     return render(request,'employee.html',context)
 
 def manager(request):
@@ -138,7 +139,8 @@ def manager(request):
     afm=ApplicationModel.objects.all()
     bfm=BookingModel.objects.all()
     sfm=StationaryModel.objects.all()
-    context = {'pfm': pfm, 'afm': afm, 'bfm': bfm, 'sfm': sfm}
+    ticket=Ticket.objects.all()
+    context = {'pfm': pfm, 'afm': afm, 'bfm': bfm, 'sfm': sfm,'ticket':ticket}
     return render(request,'manager.html',context)
 
 
@@ -189,8 +191,13 @@ def accept(request,model,id):
         smodel=StationaryModel.objects.get(id=id)
         smodel.status='accepted'
         smodel.save(update_fields=['status'])
+    
+    if model==5:
+        tmodel=Ticket.objects.get(id=id)
+        tmodel.Status='accepted'
+        tmodel.save(update_fields=['Status'])
+    
     return HttpResponseRedirect('/manager')
-
 
 def reject(request,model,id):
     # print(type(model))
@@ -213,6 +220,11 @@ def reject(request,model,id):
         smodel=StationaryModel.objects.get(id=id)
         smodel.status='rejected'
         smodel.save(update_fields=['status'])
+
+    if model==5:
+        tmodel=Ticket.objects.get(id=id)
+        tmodel.Status='rejected'
+        tmodel.save(update_fields=['Status'])
     return HttpResponseRedirect('/manager')
 
 def complete(request,model,id):
@@ -236,10 +248,34 @@ def complete(request,model,id):
         smodel=StationaryModel.objects.get(id=id)
         smodel.status='completed'
         smodel.save(update_fields=['status'])
+
+    if model==5:
+        smodel=Ticket.objects.get(id=id)
+        smodel.Status='completed'
+        smodel.save(update_fields=['Status'])
     return HttpResponseRedirect('/adminpage')
 
+def ticket(request):
+    if request.method=='POST':
+        fm=TicketForm(request.POST)
+        if fm.is_valid():
+            model=Ticket(user=request.user,Subject=request.POST.get('Subject'),
+            Severity=request.POST.get('Severity'),
+            Type=request.POST.get('Type'),
+            Manager=request.POST.get('Manager'),
+            Remarks=request.POST.get('Remarks'))
+            model.save()
+        return HttpResponseRedirect('/ticket')
+    else:
+        fm=TicketForm()
+    return render(request,'ticket.html',{'form':fm})
 
-
-
+def ticket_id(request,model,id,ticket_no):
+    print('===============',id)
+    print(model)
+    if model==5:
+        # a=Ticket.objects.all()
+        b=Ticket.objects.get(ticket_no=ticket_no)
+        return render(request,'ticket_info.html',{'b':b})
 
 

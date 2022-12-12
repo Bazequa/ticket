@@ -1,8 +1,8 @@
 from django import forms
 from django.contrib.auth.models import User
-from .models import ProductModel,ApplicationModel,BookingModel,StationaryModel
+from .models import ProductModel,ApplicationModel,BookingModel,StationaryModel,Ticket
 from django.contrib.auth.forms import UserCreationForm
-
+from django.utils.crypto import get_random_string
 class SignUpForm(UserCreationForm):
     class Meta:
         model = User
@@ -28,4 +28,7 @@ class StationaryForm(forms.ModelForm):
         fields=['employee_id','employee_name','priority','your_requirement','Reason']
 
 
-
+class TicketForm(forms.ModelForm):
+    class Meta:
+        model=Ticket
+        fields=['Subject','Severity','Type','Manager','Remarks']

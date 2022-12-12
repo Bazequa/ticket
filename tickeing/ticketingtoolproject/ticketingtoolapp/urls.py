@@ -23,6 +23,9 @@ urlpatterns = [
     path('complete/<int:model>/<int:id>',views.complete,name='complete'),
 
     path('tdelete/<int:id>/<int:model>',views.tdelete,name='delete'),
+    
+    path('ticket',views.ticket,name='ticket'),
+    path('t_id/<int:model>/<int:id>/<str:ticket_no>',views.ticket_id,name='ticket_id')
 
 ]
 

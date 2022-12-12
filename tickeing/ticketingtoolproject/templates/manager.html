@@ -14,6 +14,12 @@
         .table {
             background-color: yellowgreen;
         }
+     
+        table, th, td ,tr{
+  border: 1px solid black;
+  border-collapse: collapse;
+}
+
     </style>
 
     
@@ -26,10 +32,10 @@
  <h1>Welcome {{user}}</h1>
  
 
- <table class="table" align="center ml-3 pl-3">
+ <!-- <table class="table" align="center ml-3 pl-3">
     <thead>
-    <tr align="center">
-        {% comment %} <th>id</th> {% endcomment %}
+    <tr align="center"> -->
+        <!-- {% comment %} <th>id</th> {% endcomment %}
         <th>employeeId</th>
         <th>employee_name</th>
         <th>Requirement</th>
@@ -37,8 +43,8 @@
         <th>Time</th>
         <th>Accept/Reject</th>
         <th>Status</th>
-      
-    </tr></thead>
+       -->
+    <!-- </tr></thead>
 
     {% for fm in pfm %}
 <tr align="center">
@@ -48,17 +54,17 @@
     <td>{{ fm.your_requirement }}</td>
     <td>{{ fm.Reason }}</td>
     <td>{{fm.request_raised_at}}</td>
-      <td><a href="accept/1/{{fm.id}}">accept</a></td>
-    <a href="reject/1/{{fm.id}}">reject</a>
+      <td><a href="accept/1/{{fm.id}}">accept</a>
+    <a href="reject/1/{{fm.id}}">reject</a></td>
           <td>{{fm.status}}</td>
 
 </tr>
-{% endfor %}
+{% endfor %} -->
 
 
 
 
-    {% for fm in afm %}
+    <!-- {% for fm in afm %}
 <tr align="center">
     {% comment %} <td>{{fm.id}}</td> {% endcomment %}
     <td>{{ fm.employee_id }}</td>
@@ -71,10 +77,10 @@
         <td>{{fm.status}}</td>
     <td>{{id}}</td>
 </tr>
-{% endfor %}
+{% endfor %} -->
 
 
-    {% for fm in bfm %}
+    <!-- {% for fm in bfm %}
 <tr align="center">
     {% comment %} <td>{{fm.id}}</td> {% endcomment %}
     <td>{{ fm.employee_id }}</td>
@@ -88,9 +94,9 @@
     <td>{{id}}</td>
         </tr>
  {% endfor %}
+ -->
 
-
- {% for fm in sfm %}
+ <!-- {% for fm in sfm %}
 <tr align="center">
     {% comment %} <td>{{fm.id}}</td> {% endcomment %}
     <td>{{ fm.employee_id }}</td>
@@ -103,10 +109,41 @@
         <td>{{fm.status}}</td>
     <td>{{id}}</td>
 </tr>
- {% endfor %}
+ {% endfor %} -->
 
+ <center>
+    <h3>Ticket Information</h3>
+<table>
+<tr align="center">
+  
+    <!-- <th>ID</th> -->
+    <th>User</th>
+    <th>Subject</th>
+    <th>Severity</th>
+    <th>Type</th>
+    <th>Manager</th>
+    <th>time</th>
+    <th>Remarks</th>
+    <th>Accept</th>
+    <th>Status</th>
 
-
-</table></div>
+</tr></thead>
+{% for i in ticket %}
+<tr align="center">
+    <td>{{i.user}}</td>
+    <td>{{i.Subject}}</td>
+    <td>{{i.Severity}}</td>
+    <td>{{i.Type}}</td>
+    <td>{{i.Manager}}</td>
+    <td>{{i.request_raised_at}}</td>
+    
+    <td>{{i.Remarks}}</td>
+    <td><a href="accept/5/{{i.id}}">accept</a>
+        <a href="reject/5/{{i.id}}">reject</a></td>
+       <td>{{i.Status}}</td>
+</tr>
+{% endfor %} 
+</table>
+</center>
 </body>
 </html>

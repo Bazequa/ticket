@@ -24,12 +24,13 @@
 <body>
 <form>
 <div class="ram"> 
-
+    
    <center><h1>welcome  {{user}}</h1></center>
-    <a  class="p-5" href="{% url 'products' %}">PRODUCTS</a></hr>
+   <a class="p-5" href="{% url 'ticket' %}">Raise Your Ticket</a>
+    <!-- <a  class="p-5" href="{% url 'products' %}">PRODUCTS</a></hr>
     <a  class="p-5" href="{% url 'booking' %}">BOOKING</a><hr>
     <a  class="p-5" href="{% url 'application' %}">APPLICATION</a><hr>
-    <a  class="p-5" href="{% url 'stationary' %}">STATIONARY</a><hr>
+    <a  class="p-5" href="{% url 'stationary' %}">STATIONARY</a><hr> -->
 </div>
 
 
@@ -37,11 +38,12 @@
     <thead>
     <tr align="center">
       
-        <th>Requirement</th>
-        <th>Reason</th>
-        <th>Time</th>
-        <th>Status</th>
-        <th>Delete</th>
+        <th>Previous Tickets</th>
+        <!-- <th>Subject</th>
+        <th>Severity</th>
+        <th>Type</th>
+        <th>Manager</th>
+        <th>Remarks</th> -->
       
     </tr></thead>
 
@@ -88,6 +90,19 @@
     <td>{{fm.request_raised_at}}</td>
     <td>{{fm.status}}</td>
     <td><a  href="/tdelete/{{fm.id}}/4">Delete</a></td>
+</tr>
+{% endif %}
+{% endfor %}
+
+{% for fm in ticket %}
+{% if user == fm.user %}
+<tr align="center">
+    <td><a  href="/t_id/5/{{fm.id}}/{{fm.ticket_no}}">{{fm.ticket_no}} </a></td>
+    <!-- <td>{{ fm.Subject }}</td>
+    <td>{{fm.Severity}}</td>
+    <td>{{fm.Type}}</td>
+    <td>{{fm.Manager}}</td>
+    <td>{{fm.Remarks}}</td> -->
 </tr>
 {% endif %}
 {% endfor %}

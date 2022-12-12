@@ -1,5 +1,5 @@
 from django.contrib import admin
-from ticketingtoolapp.models import ProductModel,ApplicationModel,BookingModel,StationaryModel
+from ticketingtoolapp.models import ProductModel,ApplicationModel,BookingModel,StationaryModel,Ticket
 
 @admin.register(ProductModel)
 class ProductsAdmin(admin.ModelAdmin):
@@ -17,5 +17,7 @@ class BookingsAdmin(admin.ModelAdmin):
 class StationaryAdmin(admin.ModelAdmin):
     list_display = ['id','employee_id','employee_name','your_requirement','Reason','request_raised_at','status']
 
-
+@admin.register(Ticket)
+class TicketAdmin(admin.ModelAdmin):
+    list_display=['user','ticket_no','Subject','Severity','Type','Manager','Remarks','request_raised_at','Status']
 
