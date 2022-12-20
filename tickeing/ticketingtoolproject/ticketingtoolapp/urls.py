@@ -7,7 +7,7 @@ urlpatterns = [
 
     path("employee",views.employee,name='employee'),
     path("manager",views.manager,name='manager'),
-    path("manager1",views.manager,name='manager1'),
+    
     path("adminpage",views.admin,name='admin'),
     path('login/',views.user_login,name="logpage"),
 
@@ -22,8 +22,7 @@ urlpatterns = [
     path('reject/<int:model>/<int:id>',views.reject,name='reject'),
     path('complete/<int:model>/<int:id>',views.complete,name='complete'),
 
-    path('tdelete/<int:id>/<int:model>',views.tdelete,name='delete'),
-    
+    path('comment/<int:model>/<int:id>',views.comment,name='comment'),
     path('ticket',views.ticket,name='ticket'),
     path('t_id/<int:model>/<int:id>/<str:ticket_no>',views.ticket_id,name='ticket_id')
 

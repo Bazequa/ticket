@@ -84,6 +84,7 @@ class Ticket(models.Model):
     Manager=models.CharField(max_length=100)
     Remarks=models.TextField()
     Status=models.CharField(max_length=100,choices=status,default='raised')
+    comment=models.CharField(max_length=100,default='None')
     request_raised_at=models.DateTimeField(default=timezone.now)
     def __str__(self):
         return str(self.user)

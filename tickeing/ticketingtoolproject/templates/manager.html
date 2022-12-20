@@ -117,6 +117,7 @@
 <tr align="center">
   
     <!-- <th>ID</th> -->
+    <th>Ticket Number</th>
     <th>User</th>
     <th>Subject</th>
     <th>Severity</th>
@@ -126,10 +127,12 @@
     <th>Remarks</th>
     <th>Accept</th>
     <th>Status</th>
+    <th>comment</th>
 
 </tr></thead>
 {% for i in ticket %}
 <tr align="center">
+    <td>{{i.ticket_no}}</td>
     <td>{{i.user}}</td>
     <td>{{i.Subject}}</td>
     <td>{{i.Severity}}</td>
@@ -141,6 +144,8 @@
     <td><a href="accept/5/{{i.id}}">accept</a>
         <a href="reject/5/{{i.id}}">reject</a></td>
        <td>{{i.Status}}</td>
+       <td>{{i.comment}}</td>
+       
 </tr>
 {% endfor %} 
 </table>

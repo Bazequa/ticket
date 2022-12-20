@@ -11,7 +11,6 @@ class ProductForm(forms.ModelForm):
     class Meta:
         model=ProductModel
         fields= ['employee_id','employee_name','priority','your_requirement','Reason']
-
 class ApplicationForm(forms.ModelForm):
     class Meta:
         model=ApplicationModel
@@ -32,3 +31,8 @@ class TicketForm(forms.ModelForm):
     class Meta:
         model=Ticket
         fields=['Subject','Severity','Type','Manager','Remarks']
+
+class Comment(forms.ModelForm):
+    class Meta:
+        model=Ticket
+        fields=['comment']

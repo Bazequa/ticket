@@ -19,5 +19,5 @@ class StationaryAdmin(admin.ModelAdmin):
 
 @admin.register(Ticket)
 class TicketAdmin(admin.ModelAdmin):
-    list_display=['user','ticket_no','Subject','Severity','Type','Manager','Remarks','request_raised_at','Status']
+    list_display=['user','ticket_no','Subject','Severity','Type','Manager','Remarks','request_raised_at','Status','comment']
 

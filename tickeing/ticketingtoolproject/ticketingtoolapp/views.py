@@ -1,7 +1,7 @@
 from django.shortcuts import render,HttpResponseRedirect
-from .forms import  ProductForm,ApplicationForm,BookingForm, SignUpForm,StationaryForm,TicketForm
-from .models import ProductModel,ApplicationModel,BookingModel,StationaryModel,Ticket
+from .forms import  ProductForm,ApplicationForm,BookingForm, SignUpForm,StationaryForm,TicketForm,Comment
 # from .models import Manager,Employee,AdminPage
+from .models import ProductModel,ApplicationModel,BookingModel,StationaryModel,Ticket
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.forms import AuthenticationForm
 from django.contrib.auth.models import User
@@ -199,6 +199,21 @@ def accept(request,model,id):
         tmodel.save(update_fields=['Status'])
     
     return HttpResponseRedirect('/manager')
+
+def comment(request,model,id):
+    if model==5:
+        tmodel=Ticket.objects.get(id=id)
+        fm=Comment(request.POST,instance=tmodel)
+        if request.method=='POST':
+            # fm=Ticket(request.POST,instance=tmodel)
+            if fm.is_valid():
+                fm.save()
+            return HttpResponseRedirect('/adminpage')
+        else:
+            return render(request,'edit.html',{'form':fm})
+   
+
+
 
 def reject(request,model,id):
     if model == 1:
